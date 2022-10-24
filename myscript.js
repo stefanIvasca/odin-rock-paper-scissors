@@ -15,8 +15,10 @@ function getComputerChoice(){
     }
 }
 
-const playerSelection=prompt('Enter selection').toLocaleLowerCase();
-const computerSelection=getComputerChoice();
+let playerSelection;
+let computerSelection;
+let playerScore=0;
+let computerScore=0;
 
 
 //all combination for win and lose
@@ -24,20 +26,41 @@ function playRound(playerSelection, computerSelection){
     if (playerSelection==computerSelection){
         console.log('draw');
     }else if(playerSelection==rock&&computerSelection==paper){
-        console.log('You lose');
+        return computerScore++;
     }else if(playerSelection==rock&&computerSelection==scissors){
-            console.log('You win');
+            return playerScore++;
     }else if(playerSelection==paper&&computerSelection==scissors){
-        console.log('You lose');
+        return computerScore++;
     }else if(playerSelection==paper&&computerSelection==rock){
-        console.log('You win');
+        return playerScore++;
     }else if (playerSelection==scissors&&computerSelection==rock){
-        console.log('You lose');
+        return computerScore++;
     }else if(playerSelection==scissors&&computerSelection==paper){
-        console.log('You win');
+        return playerScore++;
     }else{
-        console.log('insert the right word')
+        console.log ('wrong word');
     }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+//best out of 5, display ar the end the result
+function game(){
+
+for (let i=0; i<5; i=playerScore+computerScore){
+    computerSelection=getComputerChoice();
+    playerSelection=prompt('Enter selection').toLowerCase();
+    playRound(playerSelection, computerSelection);
+    console.log('You '+playerScore+' Computer '+computerScore);
+    if(playerScore==3){
+        playerScore=5;
+    }else if(computerScore==3){
+        computerScore=5;
+    }else{
+        playerScore=playerScore;
+    }
+    }
+    if(playerScore>computerScore){
+        console.log('You win!');
+    }else{
+        console.log('seams that you are the loser here');
+    }
+}
