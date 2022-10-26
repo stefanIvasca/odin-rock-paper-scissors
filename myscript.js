@@ -22,7 +22,8 @@ let computerScore=0;
 
 
 //all combination for win and lose
-function playRound(playerSelection, computerSelection){
+function playRound(){
+    computerSelection=getComputerChoice();
     if (playerSelection==computerSelection){
         console.log('draw');
     }else if(playerSelection==rock&&computerSelection==paper){
@@ -49,8 +50,7 @@ const scissorsButton=document.querySelector('#scissors');
 
 rockButton.addEventListener('click', function(){
     playerSelection=rockButton.innerHTML.toLowerCase();
-    computerSelection=getComputerChoice();
-    playRound(playerSelection, computerSelection);
+    playRound();
     console.log('You '+playerScore+' Computer '+computerScore);
     if(computerScore+playerScore==5){
         rockButton.disabled=true;
@@ -72,8 +72,7 @@ rockButton.addEventListener('click', function(){
 });
 paperButton.addEventListener('click', function(){
     playerSelection=paperButton.innerHTML.toLowerCase();
-    computerSelection=getComputerChoice();
-    playRound(playerSelection, computerSelection);
+    playRound();
     console.log('You '+playerScore+' Computer '+computerScore);
     if(computerScore+playerScore==5){
         rockButton.disabled=true;
@@ -95,8 +94,7 @@ paperButton.addEventListener('click', function(){
 });
 scissorsButton.addEventListener('click', function(){
     playerSelection=scissorsButton.innerHTML.toLowerCase();
-    computerSelection=getComputerChoice();
-    playRound(playerSelection, computerSelection);
+    playRound();
     console.log('You '+playerScore+' Computer '+computerScore);
     if(computerScore+playerScore==5){
         rockButton.disabled=true;
