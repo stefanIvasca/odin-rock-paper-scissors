@@ -38,16 +38,95 @@ function playRound(playerSelection, computerSelection){
     }else if(playerSelection==scissors&&computerSelection==paper){
         return playerScore++;
     }else{
-        console.log ('wrong word');
+        console.log ('something is wrong');
     }
 }
 
-//best out of 5, display ar the end the result
+const rockButton=document.querySelector('#rock');
+const paperButton=document.querySelector('#paper');
+const scissorsButton=document.querySelector('#scissors');
+
+
+rockButton.addEventListener('click', function(){
+    playerSelection=rockButton.innerHTML.toLowerCase();
+    computerSelection=getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    console.log('You '+playerScore+' Computer '+computerScore);
+    if(computerScore+playerScore==5){
+        rockButton.disabled=true;
+        paperButton.disabled=true;
+        scissorsButton.disabled=true;
+    if(playerScore==3){
+        playerScore=5;
+    }else if(computerScore==3){
+        computerScore=5;
+    }else{
+        playerScore=playerScore;
+    }
+    if(playerScore>computerScore){
+        console.log('You win!');
+    }else{
+        console.log('You lose');
+    }
+}
+});
+paperButton.addEventListener('click', function(){
+    playerSelection=paperButton.innerHTML.toLowerCase();
+    computerSelection=getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    console.log('You '+playerScore+' Computer '+computerScore);
+    if(computerScore+playerScore==5){
+        rockButton.disabled=true;
+        paperButton.disabled=true;
+        scissorsButton.disabled=true;
+    if(playerScore==3){
+        playerScore=5;
+    }else if(computerScore==3){
+        computerScore=5;
+    }else{
+        playerScore=playerScore;
+    }
+    if(playerScore>computerScore){
+        console.log('You win!');
+    }else{
+        console.log('You lose');
+    }
+}
+});
+scissorsButton.addEventListener('click', function(){
+    playerSelection=scissorsButton.innerHTML.toLowerCase();
+    computerSelection=getComputerChoice();
+    playRound(playerSelection, computerSelection);
+    console.log('You '+playerScore+' Computer '+computerScore);
+    if(computerScore+playerScore==5){
+        rockButton.disabled=true;
+        paperButton.disabled=true;
+        scissorsButton.disabled=true;
+    if(playerScore==3){
+        playerScore=5;
+    }else if(computerScore==3){
+        computerScore=5;
+    }else{
+        playerScore=playerScore;
+    }
+    if(playerScore>computerScore){
+        console.log('You win!');
+    }else{
+        console.log('You lose');
+    }
+}
+});
+
+
+
+
+//best out of 5, display at the end the result
+
+
 function game(){
 
 for (let i=0; i<5; i=playerScore+computerScore){
     computerSelection=getComputerChoice();
-    playerSelection=prompt('Enter selection').toLowerCase();
     playRound(playerSelection, computerSelection);
     console.log('You '+playerScore+' Computer '+computerScore);
     if(playerScore==3){
@@ -61,6 +140,6 @@ for (let i=0; i<5; i=playerScore+computerScore){
     if(playerScore>computerScore){
         console.log('You win!');
     }else{
-        console.log('seams that you are the loser here');
+        console.log('You lose');
     }
 }
