@@ -25,7 +25,8 @@ let computerScore=0;
 function playRound(){
     computerSelection=getComputerChoice();
     if (playerSelection==computerSelection){
-        console.log('draw');
+        divDraw.innerText='draw';
+        document.body.appendChild(divDraw);
     }else if(playerSelection==rock&&computerSelection==paper){
         return computerScore++;
     }else if(playerSelection==rock&&computerSelection==scissors){
@@ -46,98 +47,99 @@ function playRound(){
 const rockButton=document.querySelector('#rock');
 const paperButton=document.querySelector('#paper');
 const scissorsButton=document.querySelector('#scissors');
+const divFinal=document.createElement('div');
+const div=document.createElement('div');
+const divDraw=document.createElement('div');
+divDraw.className='divDraw';
 
 
 rockButton.addEventListener('click', function(){
     playerSelection=rockButton.innerHTML.toLowerCase();
+    divDraw.innerText='';
     playRound();
-    console.log('You '+playerScore+' Computer '+computerScore);
+    div.innerText='You '+playerScore+' Computer '+computerScore;
+    document.body.appendChild(div);
     if(computerScore+playerScore==5){
+        if(playerScore>computerScore){
+            divFinal.innerText='You win!';
+            document.body.appendChild(divFinal);
+        }else{
+            divFinal.innerText='You lose!';
+            document.body.appendChild(divFinal);
+        }
         rockButton.disabled=true;
         paperButton.disabled=true;
         scissorsButton.disabled=true;
-    if(playerScore==3){
-        playerScore=5;
-    }else if(computerScore==3){
-        computerScore=5;
-    }else{
-        playerScore=playerScore;
+    }else if(playerScore==3||computerScore==3){
+        if(playerScore>computerScore){
+            divFinal.innerText='You win!';
+            document.body.appendChild(divFinal);
+        }else{
+            divFinal.innerText='You lose!';
+            document.body.appendChild(divFinal);
+        }
+        rockButton.disabled=true;
+        paperButton.disabled=true;
+        scissorsButton.disabled=true;
     }
-    if(playerScore>computerScore){
-        console.log('You win!');
-    }else{
-        console.log('You lose');
-    }
-}
 });
 paperButton.addEventListener('click', function(){
     playerSelection=paperButton.innerHTML.toLowerCase();
+    divDraw.innerText='';
     playRound();
-    console.log('You '+playerScore+' Computer '+computerScore);
+    div.innerText='You '+playerScore+' Computer '+computerScore;
+    document.body.appendChild(div);
     if(computerScore+playerScore==5){
+        if(playerScore>computerScore){
+            divFinal.innerText='You win!';
+            document.body.appendChild(divFinal);
+        }else{
+            divFinal.innerText='You lose!';
+            document.body.appendChild(divFinal);
+        }
         rockButton.disabled=true;
         paperButton.disabled=true;
         scissorsButton.disabled=true;
-    if(playerScore==3){
-        playerScore=5;
-    }else if(computerScore==3){
-        computerScore=5;
-    }else{
-        playerScore=playerScore;
+    }else if(playerScore==3||computerScore==3){
+        if(playerScore>computerScore){
+            divFinal.innerText='You win!';
+            document.body.appendChild(divFinal);
+        }else{
+            divFinal.innerText='You lose!';
+            document.body.appendChild(divFinal);
+        }
+        rockButton.disabled=true;
+        paperButton.disabled=true;
+        scissorsButton.disabled=true;
     }
-    if(playerScore>computerScore){
-        console.log('You win!');
-    }else{
-        console.log('You lose');
-    }
-}
 });
 scissorsButton.addEventListener('click', function(){
     playerSelection=scissorsButton.innerHTML.toLowerCase();
+    divDraw.innerText='';
     playRound();
-    console.log('You '+playerScore+' Computer '+computerScore);
+    div.innerText='You '+playerScore+' Computer '+computerScore;
+    document.body.appendChild(div);
     if(computerScore+playerScore==5){
+        if(playerScore>computerScore){
+            divFinal.innerText='You win!';
+            document.body.appendChild(divFinal);
+        }else{
+            divFinal.innerText='You lose!';
+            document.body.appendChild(divFinal);
+        }
         rockButton.disabled=true;
         paperButton.disabled=true;
         scissorsButton.disabled=true;
-    if(playerScore==3){
-        playerScore=5;
-    }else if(computerScore==3){
-        computerScore=5;
-    }else{
-        playerScore=playerScore;
+    }else if(playerScore==3||computerScore==3){
+        if(playerScore>computerScore){
+            divFinal.innerText='You win!';
+            document.body.appendChild(divFinal);
+        }else{
+            divFinal.innerText='You lose!';
+            document.body.appendChild(divFinal);
+        }
+        rockButton.disabled=true;
+        paperButton.disabled=true;
+        scissorsButton.disabled=true;
     }
-    if(playerScore>computerScore){
-        console.log('You win!');
-    }else{
-        console.log('You lose');
-    }
-}
 });
-
-
-
-
-//best out of 5, display at the end the result
-
-
-function game(){
-
-for (let i=0; i<5; i=playerScore+computerScore){
-    computerSelection=getComputerChoice();
-    playRound(playerSelection, computerSelection);
-    console.log('You '+playerScore+' Computer '+computerScore);
-    if(playerScore==3){
-        playerScore=5;
-    }else if(computerScore==3){
-        computerScore=5;
-    }else{
-        playerScore=playerScore;
-    }
-    }
-    if(playerScore>computerScore){
-        console.log('You win!');
-    }else{
-        console.log('You lose');
-    }
-}
